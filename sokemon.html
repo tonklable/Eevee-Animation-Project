@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Eevee</title>
+    <!-- TODO: Advanced: favicon.ico ... Google it! -->
+    <link rel="icon" href="favicon.ico?v=1.1">
+    <link type="text/css" rel="stylesheet" href="css/sokemon.css">
+    <script type="application/javascript" src="js/anime.min.js"></script>
+    <script type="text/javascript" src="data/pokedex.js"></script>
+    <script type="text/javascript" src="data/types.js"></script>
+    <script type="text/javascript" src="data/moves.js"></script>
+    <script type="application/javascript" src="js/sokemon.anime.js"></script>
+</head>
+<!-- NOTE: We need the background transparent ... set it up in CSS! -->
+
+<body>
+
+    <!-- TODO: Place your completed sokémon here! Well, the HTML! -->
+    <!-- <ul id="messages">
+        <li>Nipun Mangkaja: Hello</li>
+    </ul> -->
+    <div id="container">
+        <!-- If you want to try animating in canvas ... -->
+        <!-- <canvas id="sokemon" width="225" height="275"></canvas> -->
+
+        <!-- If you want to try Anime.js ... -->
+        <div id="eevee">
+            <div id="head">
+                <div id="ear-left" class="ear">
+                    <div class="innerear"></div>
+                </div>
+                <div id="ear-right" class="ear">
+                    <div class="innerear"></div>
+                </div>
+                <div id="face">
+                    <div id="eye-left" class="eye">
+                        <div id="eyelash-left" class="eyelash"></div>
+                        <div class="fulleye">
+                            <div class="blackeye">
+                                <div class="whiteeye"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="eye-right" class="eye">
+                        <div id="eyelash-right" class="eyelash"></div>
+                        <div class="fulleye">
+                            <div class="blackeye">
+                                <div class="whiteeye"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="nose"></div>
+                    <div id="mouth">
+                        <div id="tongue"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="body">
+                <div id="mainbody"></div>
+                <div id="leg-front-left" class="leg"></div>
+                <div id="leg-front-right" class="leg"></div>
+                <div id="leg-back-left" class="leg"></div>
+                <div id="leg-back-right" class="leg"></div>
+                <div id="mane"></div>
+            </div>
+            <div id="tail">
+                <div id="tail-trunk"></div>
+                <div id="tail-tip"></div>
+            </div>
+        </div>
+    </div>
+    <div id="background" class="transparent">
+        <div id="place"></div>
+    </div>
+
+    <!-- <button id="button1">Speak</button>
+    <button id="button2">Custom and Speak</button>
+    <input id="txt" type="text" class="txt" /> -->
+
+    <!-- <div id="controls">
+        <button id="trigger-attack" class="button" type="button">Attack</button>
+        What else ...?
+    </div> -->
+
+    <script src="http://localhost:3002/socket.io/socket.io.js"></script>
+    <script>
+
+        // Client-side:
+        // The below is to participate in the Battle Arena!
+
+        // TODO: The rest of Part 3! Follow the instructions ...
+        const socket = io.connect(':3002');
+
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     if (input.value) {
+        //         socket.emit('chat message', input.value);
+        //         input.value = '';
+        //     }
+        // });
+
+        socket.on('chat message', function (msg) {
+            // var item = document.createElement('li');
+            // item.textContent = msg;
+            // messages.appendChild(item);
+            console.log('io message', msg);
+            // window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        // The Battle Arena is on port 9999
+
+        socket.on('hit', function (hit) {
+            // The "hit" parameter is an object with:
+            // currentPlayer, otherPlayer, currentHP, totalHP
+            console.log('hitter: ', hit.currentPlayer.name);
+
+            if (window.MySokemon.name['english'] == hit.currentPlayer.name)
+                window.MySokemon.behavior.attack();
+        });
+
+        socket.on('dodge', function (dodge) {
+            console.log('dodger: ', dodge.currentPlayer.name);
+
+            if (window.MySokemon.name['english'] == dodge.currentPlayer.name)
+                window.MySokemon.behavior.dodge();
+        });
+
+        socket.on('cry', function (cry) {
+            console.log('crier: ', cry.currentPlayer.name);
+
+            if (window.MySokemon.name['english'] == cry.currentPlayer.name)
+                window.MySokemon.behavior.cry();
+        });
+    </script>
+
+
+</body>
+
+</html>

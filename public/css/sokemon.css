@@ -1,0 +1,559 @@
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    overflow: hidden;
+    font-size: 21pt;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 300;
+}
+
+.transparent {
+    /* TODO: How do you make the background transparent? */
+    opacity: 0;
+}
+
+/* This is the Wizard of Oz controls */
+
+.controls {
+    /* Your TODO */
+    z-index: 2;
+    position: absolute;
+    bottom: 45vw;
+    left: 2vw;
+}
+
+.controls button {
+    /* Your TODO */
+    width: 8vw;
+    height: 4vw;
+}
+
+.controls button:hover {
+    /* Your TODO */
+}
+
+.controls button:active {
+    /* Your TODO */
+}
+
+#messages {
+    position: absolute;
+    list-style-type: none;
+    /* margin: 0;
+    padding: 0; */
+    bottom: 2vw;
+    right: 2vw;
+    z-index: 3;
+}
+
+#messages>li {
+    padding: 0.5rem 1rem;
+}
+
+#messages>li:nth-child(odd) {
+    background: #efefef;
+}
+
+/* #r {
+    text-align: right;
+}
+
+#m {
+    text-align: center;
+} */
+
+/* This is the background scenery */
+
+#background {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #EFEFBB;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #D4D3DD, #EFEFBB);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #D4D3DD, #EFEFBB);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100%;
+    height: 100%;
+}
+
+#place {
+    position: absolute;
+    bottom: 5vw;
+    left: auto;
+    opacity: 0.5;
+    border-radius: 100%;
+    background: #636363;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #a2ab58, #636363);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #a2ab58, #636363);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0 calc((100vw / 2) - 15vw);
+    width: 30vw;
+    height: 5vw;
+}
+
+/* The container holds our sokémon */
+
+#container {
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* Let's make our sokémon */
+/* TODO: Replace with your styles */
+
+#eevee {
+    z-index: 2;
+    position: absolute;
+    /* border: 1px solid #aaa; */
+    width: 40vw;
+    height: 40vw;
+    bottom: 5vh;
+    left: 37vw;
+}
+
+#head {
+    z-index: 1;
+    margin-top: 15%;
+    margin-left: 0%;
+    width: 40%;
+    aspect-ratio: 1.25;
+    border-radius: 100%;
+    background-image: radial-gradient(90.21% 90.21% at 23.48% 9%, #EFC698 40%, #C28E5B 80.98%);
+    transform: rotate(9deg);
+}
+
+
+#face {
+    position: relative;
+    top: 21%;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(80.32% 140.32% at 19.7% 0.48%, #EFC698 46%, #C28E5B 117.92%, #A67C87 100.73%);
+    position: relative;
+    border-radius: 30%;
+}
+
+
+#face:before {
+    content: "";
+    border: inherit;
+    position: absolute;
+    top: 0vw;
+    background-image: radial-gradient(80.32% 139.32% at 26% 62.48%, #EFC698 40%, #C28E5B 82.92%, #A67C87 100.73%);
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+}
+
+
+#face:after {
+    content: "";
+    border: inherit;
+    position: absolute;
+    top: 0vw;
+    background-image: radial-gradient(80.32% 139.32% at 61% -1.52%, #EFC698 47%, #C28E5B 80.92%, #A67C87 100.73%);
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+}
+
+#face:before {
+    transform: rotate(60deg);
+}
+
+#face:after {
+    transform: rotate(-60deg);
+}
+
+/* Drawing curved-edge hexagon code from https: //www.geeksforgeeks.org/how-to-draw-a-curved-edge-hexagon-using-css/*/
+
+/* 
+#head {
+    position: relative;
+    border-radius: 100%;
+    background-color: #f8f0aa;
+    border: 0.4vw solid #534e28;
+    transform: rotate(15deg);
+    margin: 0 calc(25vw / 2);
+    width: 25vw;
+    height: 20vw;
+} */
+
+#body {
+    z-index: -1;
+    position: absolute;
+    width: 46.9%;
+    aspect-ratio: 1.531;
+    transform: rotate(-20.36deg);
+    left: 13%;
+    top: 44%;
+}
+
+#mainbody {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: inherit;
+    border-radius: 100%;
+    background: #A77D53;
+    /* border: #000000 2px solid; */
+}
+
+#mane {
+    width: 53%;
+    position: relative;
+    text-align: left;
+    top: 10%;
+    left: -10%;
+
+}
+
+#mane:before,
+#mane:after {
+    width: 100%;
+    content: '';
+    position: absolute;
+    background-color: inherit;
+}
+
+#mane,
+#mane:before,
+#mane:after {
+    aspect-ratio: 1;
+    border-top-right-radius: 73%;
+}
+
+#mane {
+    transform: rotate(148deg) skewX(346deg) scale(1, 1.066);
+    background-image: radial-gradient(85.25% 68.25% at 23.11% 81.32%, #EFDCB8 28.66%, #CAB89A 117.93%);
+
+}
+
+#mane:before {
+    transform: rotate(-135deg) skewX(-45deg) scale(1.414, .707) translate(0, -50%);
+    background-image: radial-gradient(85.25% 68.25% at 0.11% 85.82%, #EFDCB8 28.66%, #CAB89A 117.93%);
+}
+
+#mane:after {
+    transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
+    background-image: radial-gradient(85.25% 68.25% at 52.11% 42.82%, #EFDCB8 28.66%, #CAB89A 117.93%);
+}
+
+.leg {
+    position: absolute;
+    width: 22%;
+    height: 104%;
+    border-radius: 100%;
+    /* border: #000000 2px solid; */
+
+}
+
+#leg-front-left {
+    top: 22%;
+    left: -15%;
+    transform: rotate(27deg);
+    background-image: linear-gradient(5.62deg, #CCA071 9.19%, #CCA071 14.01%, #C6925D 31.54%, #A67C53 40.66%, #A67C53 60.24%);
+    z-index: -3;
+}
+
+#leg-front-right {
+    top: 41%;
+    left: 5%;
+    transform: rotate(35deg);
+    background-image: linear-gradient(5.62deg, #CCA071 9.19%, #CCA071 14.01%, #C6925D 31.54%, #A67C53 40.66%, #A67C53 60.24%);
+    z-index: -4;
+}
+
+#leg-back-left {
+    top: 27%;
+    left: 36%;
+    transform: rotate(32deg);
+    background-image: linear-gradient(1.54deg, #CCA071 4.42%, #664C4A 13.22%);
+    z-index: -1;
+}
+
+#leg-back-right {
+    top: 40%;
+    left: 66%;
+    transform: rotate(34deg);
+    background-image: linear-gradient(1.54deg, #CCA071 10%, #CCA071 11.81%, #C6925D 17.34%, #A67C53 30.46%, #A67C53 63.05%);
+    z-index: -2;
+}
+
+/* Rounded-corner triangle from Murray Rowan from https: //stackoverflow.com/questions/14446677/how-to-make-3-corner-rounded-triangle-in-css */
+
+.ear {
+    position: absolute;
+    width: 34.87%;
+    height: 128.865%;
+    background: #D1A06F;
+    border-radius: 100%;
+}
+
+.innerear {
+    top: 8%;
+    left: 13%;
+    position: absolute;
+    width: 69.69%;
+    height: 81.472%;
+    background: radial-gradient(57% 57% at 48.68% 43%, #62390D 47.4%, #000000 68.23%);
+    border-radius: 100%;
+}
+
+#ear-left {
+    top: -83.652%;
+    left: -3.435%;
+    transform-origin: bottom;
+    transform: rotate(331deg);
+    z-index: 0;
+}
+
+#ear-right {
+    top: -85%;
+    left: 59%;
+    transform-origin: bottom;
+    transform: rotate(55.77deg);
+    z-index: 2;
+}
+
+.eye {
+    position: absolute;
+}
+
+#cry-right {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: skyblue;
+    z-index: 99999;
+}
+
+#eyelash-left {
+    position: absolute;
+    width: 15px;
+    height: 0px;
+
+    border: 1px solid #202020;
+    border-radius: 3px;
+    transform: rotate(62deg);
+    top: 50%;
+    left: 12%;
+}
+
+#eyelash-right {
+    position: absolute;
+    width: 15px;
+    height: 0px;
+
+    border: 1px solid #202020;
+    border-radius: 3px;
+    transform: rotate(-60deg);
+    top: 50%;
+    left: -3%;
+    z-index: 99;
+}
+
+
+.fulleye {
+    z-index: 2;
+    position: absolute;
+    background-image: radial-gradient(59.56% 59.56% at 53.97% 100.09%, #7C4F22 22.4%, #000000 100%);
+    width: 15.21%;
+    aspect-ratio: 0.541;
+    border-radius: 50%;
+}
+
+/* .eyelid {
+    z-index: 5;
+    position: absolute;
+    background-color: #A77D53;
+    width: 15.21%;
+    aspect-ratio: 0.541;
+    border-radius: 50%;
+} */
+
+.blackeye {
+    z-index: 3;
+    left: 19%;
+    position: absolute;
+    background-color: black;
+    width: 71.42%;
+    height: 81.42%;
+    border-radius: 50%;
+}
+
+.whiteeye {
+    z-index: 4;
+    left: 0%;
+    top: 12%;
+    position: absolute;
+    background-color: white;
+    width: 50%;
+    height: 42.966%;
+    border-radius: 50%;
+}
+
+#eye-left {
+    width: inherit;
+    top: 31.57%;
+    left: 8.696%;
+    z-index: 3;
+}
+
+#eye-right {
+    width: inherit;
+    top: 32.609%;
+    left: 65.217%;
+}
+
+#nose {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+
+    background: #202020;
+    clip-path: polygon(0 35%, 25% 80%, 45% 100%, 55% 100%, 75% 80%, 100% 35%, 80% 0, 20% 0);
+    border-radius: 100px;
+    z-index: 98;
+    top: 68%;
+    left: 41%;
+}
+
+#mouth {
+    position: absolute;
+    background-color: #7C4F22;
+    width: 20%;
+    height: 15%;
+    border-radius: 7% 7% 100% 100%;
+    top: 85%;
+    left: 36%;
+    z-index: 2;
+}
+
+#tongue {
+    position: absolute;
+    background-color: red;
+    width: 67%;
+    height: 61%;
+    border-radius: 50% 50% 100% 100%;
+    left: 20%;
+    top: 40%;
+    z-index: -1;
+}
+
+#tail {
+    width: 41%;
+    z-index: -2;
+    position: absolute;
+    left: 50%;
+    top: 18%;
+}
+
+#tail-trunk {
+    z-index: -2;
+    background-image: radial-gradient(113.72% 113.72% at 49.7% 9.15%, #9C754E 43.02%, #745449 53.44%);
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    /* border: #000000 2px solid; */
+    border-top: none;
+    transform: rotate(32deg)
+}
+
+#tail-tip {
+    z-index: -3;
+    width: 53%;
+    position: absolute;
+    text-align: left;
+    top: -15%;
+    left: 38%;
+
+}
+
+#tail-tip:before,
+#tail-tip:after {
+    width: 100%;
+    content: '';
+    position: absolute;
+    background-color: inherit;
+}
+
+#tail-tip,
+#tail-tip:before,
+#tail-tip:after {
+    aspect-ratio: 1;
+    border-top-right-radius: 73%;
+}
+
+#tail-tip {
+    transform: rotate(230deg) skewX(346deg) scale(1, 1.066);
+    background-image: radial-gradient(85.25% 68.25% at 27.11% 114.32%, #DEC8A2 28.66%, #9C754E 117.93%);
+}
+
+#tail-tip:before {
+    transform: rotate(-135deg) skewX(-45deg) scale(1.414, .707) translate(0, -50%);
+    background-image: radial-gradient(86.25% 37.25% at -60.89% 33.82%, #DEC8A2 28.66%, #9C754E 117.93%);
+}
+
+#tail-tip:after {
+    transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
+    background-image: radial-gradient(85.25% 68.25% at 67.11% 28.82%, #DEC8A2 28.66%, #9C754E 117.93%);
+}
+
+select {
+    width: 83%;
+}
+
+#form {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.25rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 3rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+
+/* button t move eevee */
+.button {
+    height: 50vh;
+}
+
+.button>div {
+    width: 10vw;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid black;
+    display: inline-block;
+    text-align: center;
+}
+
+.button>div:hover {
+    background-color: black;
+    color: white;
+}
+
+.button>div>p {
+    font-family: futura;
+    font-weight: 400;
+}

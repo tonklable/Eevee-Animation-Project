@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Eevee</title>
+    <!-- TODO: Advanced: favicon.ico ... Google it! -->
+    <link rel="icon" href="favicon.ico?v=1.1">
+    <!-- <link rel="icon" href="favicon.ico"> -->
+    <link type="text/css" rel="stylesheet" href="css/sokemon.css" />
+    <script type="application/javascript" src="js/anime.min.js"></script>
+    <script type="text/javascript" src="data/pokedex.js"></script>
+    <script type="text/javascript" src="data/types.js"></script>
+    <script type="text/javascript" src="data/moves.js"></script>
+    <script type="application/javascript" src="js/sokemon.anime.js"></script>
+</head>
+
+<body>
+    <!-- TODO: Place your completed sokémon here! Well, the HTML! -->
+    <ul id="messages">
+        <li>Eevee: Hello</li>
+    </ul>
+    <div id="container">
+        <!-- If you want to try animating in canvas ... -->
+        <!-- <canvas id="sokemon" width="225" height="275"></canvas> -->
+
+        <!-- If you want to try Anime.js ... -->
+        <div id="eevee">
+            <div id="head">
+                <div id="ear-left" class="ear">
+                    <div class="innerear"></div>
+                </div>
+                <div id="ear-right" class="ear">
+                    <div class="innerear"></div>
+                </div>
+                <div id="face">
+                    <div id="eye-left" class="eye">
+                        <div id="eyelash-left" class="eyelash"></div>
+                        <div class="fulleye">
+                            <div class="blackeye">
+                                <div class="whiteeye"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="eye-right" class="eye">
+                        <div id="eyelash-right" class="eyelash"></div>
+                        <div class="fulleye">
+                            <div class="blackeye">
+                                <div class="whiteeye"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="nose"></div>
+                    <div id="mouth">
+                        <div id="tongue"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="body">
+                <div id="mainbody"></div>
+                <div id="leg-front-left" class="leg"></div>
+                <div id="leg-front-right" class="leg"></div>
+                <div id="leg-back-left" class="leg"></div>
+                <div id="leg-back-right" class="leg"></div>
+                <div id="mane"></div>
+            </div>
+            <div id="tail">
+                <div id="tail-trunk"></div>
+                <div id="tail-tip"></div>
+            </div>
+        </div>
+
+        <form id="form" action="">
+            <input id="input" autocomplete="off" placeholder="Let's chat" /><button>Send</button>
+        </form>
+
+    </div>
+    <div class="controls">
+        <button type="button" id="attackButton">
+            <p>ATTACK</p>
+        </button>
+        <button type="button" id="dodgeButton">
+            <p>DODGE</p>
+        </button>
+        <button type="button" id="cryButton">
+            <p>CRY</p>
+        </button>
+        <button type="button" id="joinButton">
+            <p>JOIN BATTLE</p>
+        </button>
+        <button type="button" id="disconnectButton">
+            <p>DISCONNECT</p>
+        </button>
+    </div>
+
+    <div id="background">
+        <div id="place"></div>
+    </div>
+
+
+
+    <form id="form" action="">
+        <input id="input" autocomplete="off" placeholder="Let's chat" /><button>Send</button>
+    </form>
+
+    </div>
+    <div id="background">
+        <div id="place"></div>
+    </div>
+
+    <!-- <form>
+        <label for="txt">Enter text</label>
+        <input id="txt" type="text" class="txt" />
+        <div>
+            <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate" />
+            <div class="rate-value">1</div>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+            <div class="pitch-value">1</div>
+            <div class="clearfix"></div>
+        </div>
+        <select></select>
+        <div class="controls">
+            <button id="play" type="submit">Play</button>
+        </div>
+    </form>
+
+    <script src="js/eevee.sound.js"></script> -->
+    <!-- <button id="button1">Speak</button>
+    <button id="button2">Custom and Speak</button>
+    <input id="txt" type="text" class="txt" /> -->
+
+    <div id="controls">
+        <button id="trigger-attack" class="button" type="button">
+            Attack
+        </button>
+        <!-- What else ...? -->
+    </div>
+
+    <script src="http://localhost:3002/socket.io/socket.io.js"></script>
+    <script defer>
+        // Client-side:
+        // The below is to participate in the Battle Arena!
+
+        // TODO: The rest of Part 3! Follow the instructions ...
+
+        // The Battle Arena is on port 9999
+        // var socket = io('http://localhost:3002');
+        // var socket = io.connect(':3002');
+        // var socket2 = io.connect(':3001');
+        const socket = io.connect(":3002");
+
+        // Let's make vars for some commonly used elements
+        var my_ip;
+        var my_port = 3001;
+        var btn_battle_attack = document.getElementById("trigger-attack");
+        // TODO: What else ...?
+
+        // Get our ip address
+        fetch("/ip")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("your ip: " + data.ip);
+                my_ip = data.ip;
+            });
+
+        // TODO: Whatever the Part 3 instructions ask of you!
+        var messages = document.getElementById("messages");
+        var form = document.getElementById("form");
+        var input = document.getElementById("input");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit("chat message", input.value);
+                input.value = "";
+            }
+        });
+
+        socket.on("chat message", function (msg) {
+            var item = document.createElement("li");
+            item.textContent = msg;
+            messages.appendChild(item);
+            console.log("io message", msg);
+            // window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        // The rest is for the Battle Arena:
+
+        // Send desire to battle ... by sending your Sokémon
+        // TODO: Connect this to your Wizard of Oz control panel
+        console.log("calling Sokemon");
+
+        socket.emit("join battle", {
+            ip: my_ip,
+            port: my_port,
+            name: window.MySokemon.name['english'],
+            sokemon: window.MySokemon,
+        });
+        console.log("join battle", my_ip);
+
+        // Send desire to quit battle
+        // TODO: Connect this to your Wizard of Oz control panel
+        socket.emit("quit battle", {
+            ip: my_ip,
+            port: my_port,
+            name: window.MySokemon.name['english'],
+            sokemon: window.MySokemon,
+        });
+        console.log("quit battle", my_ip);
+
+        // // Send desire to attack
+        // // TODO: Connect this to your Wizard of Oz control panel
+        // socket.emit("battle action: attack", {
+        //     ip: my_ip,
+        //     port: my_port,
+        //     name: window.MySokemon.name['english'],
+        //     sokemon: window.MySokemon,
+        // });
+        // console.log("battle action: attack", my_ip);
+
+        // // Send desire to dodge
+        // // TODO: Connect this to your Wizard of Oz control panel
+        // socket.emit("battle action: dodge", {
+        //     ip: my_ip,
+        //     port: my_port,
+        //     name: window.MySokemon.name['english'],
+        //     sokemon: window.MySokemon,
+        // });
+        // console.log("battle action: dodge", my_ip);
+
+        // socket.emit("battle action: cry", {
+        //     ip: my_ip,
+        //     port: my_port,
+        //     name: window.MySokemon.name['english'],
+        //     sokemon: window.MySokemon,
+        // });
+        // console.log("battle action: cry", my_ip);
+    </script>
+</body>
+
+</html>

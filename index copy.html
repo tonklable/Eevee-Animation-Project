@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Our Sokémon</title>
+    <link type="text/css" rel="stylesheet" href="css/eevee.css">
+    <script type="application/javascript" src="js/anime.min.js"></script>
+    <script type="application/javascript" src="data/pokedex.js"></script>
+    <script type="application/javascript" src="data/moves.js"></script>
+    <script type="application/javascript" src="js/eevee.anime.js"></script>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <!-- If you want to try animating in canvas ... -->
+        <!-- <canvas id="sokemon" width="225" height="275"></canvas> -->
+
+        <!-- If you want to try Anime.js ... -->
+        <div id="eevee">
+            <div id="head">
+                <div id="ear-left" class="ear">
+                    <div class="innerear"></div>
+                </div>
+                <div id="ear-right" class="ear">
+                    <div class="innerear"></div>
+                </div>
+                <div id="face">
+                    <div id="eye-left" class="eye">
+                        <div id="eyelash-left" class="eyelash"></div>
+                        <div class="fulleye">
+                            <div class="blackeye">
+                                <div class="whiteeye"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="eye-right" class="eye">
+                        <div id="eyelash-right" class="eyelash"></div>
+                        <div class="fulleye">
+                            <div class="blackeye">
+                                <div class="whiteeye"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="nose"></div>
+                    <div id="mouth">
+                        <div id="tongue"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="body">
+                <div id="mainbody"></div>
+                <div id="leg-front-left" class="leg"></div>
+                <div id="leg-front-right" class="leg"></div>
+                <div id="leg-back-left" class="leg"></div>
+                <div id="leg-back-right" class="leg"></div>
+                <div id="mane"></div>
+            </div>
+            <div id="tail">
+                <div id="tail-trunk"></div>
+                <div id="tail-tip"></div>
+            </div>
+        </div>
+
+    </div>
+    <div id="background">
+        <div id="place"></div>
+    </div>
+
+    <!-- Sound -->
+
+    <!-- <form>
+        <label for="txt">Enter text</label>
+        <input id="txt" type="text" class="txt" />
+        <div>
+            <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate" />
+            <div class="rate-value">1</div>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+            <div class="pitch-value">1</div>
+            <div class="clearfix"></div>
+        </div>
+        <select></select>
+        <div class="controls">
+            <button id="play" type="submit">Play</button>
+        </div>
+    </form>
+
+    <script src="js/eevee.sound.js"></script> -->
+    <button id="button1">Speak</button>
+    <button id="button2">Custom and Speak</button>
+    <input id="txt" type="text" class="txt" />
+</body>
+
+</html>
