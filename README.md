@@ -1,4 +1,10 @@
-# FY22-PUX-P3-Web-Sokemon
+# Eevee-Animation-Project
+
+This project is a part of Prototyping UX class lectured by Prof. Katie Seaborn from Tokyo Institute of Technology. The team include Natprawee Pattayawij (me), Nipun Mangkaja and Takuya Takahashi. The project was set up by Prof. Katie Seaborn. My contribution part is creating the shape of Eevee character by HTML/CSS, animating the character by Javascript and connecting to server side by Node.JS and socket.io.
+
+The part after this is provided by Prof. Katie Seaborn.
+
+## Project
 
 Let's create socket monsters, aka sokémon. Now that we have the **visuals**, **movement**, **attributes and abilities**, and **voice** of our sokémon done, let's apply our knowledge of Node.js and Socket.IO so that our sokémon can **communicate** with other sokémon and **network** with other computers ... as well as participate in the **Battle Arena**.
 
